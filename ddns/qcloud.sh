@@ -60,7 +60,7 @@ getSignature() {
 sendRequest() {
 	local query="Action=$1&Nonce=$Nonce&Region=sh&SecretId=$ApiId&SignatureMethod=HmacSHA256&Timestamp=$Timestamp&$2"
 	local sig=$(getSignature $query)
-	local result=$(wget -qO- --no-check-certificate --content-on-error "https://cns.api.qcloud.com/v2/index.php?$query&Signature=$sig")
+	local result=$(wget -qO- --no-check-certificate "https://cns.api.qcloud.com/v2/index.php?$query&Signature=$sig")
 	echo $result
 }
 
